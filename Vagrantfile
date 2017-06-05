@@ -1,7 +1,7 @@
 $install_mysql = <<SCRIPT
 apt-get update && apt-get upgrade -y
-echo "mysql-server-5.7 mysql-server/root_password password root" | sudo debconf-set-selections
-echo "mysql-server-5.7 mysql-server/root_password_again password root" | sudo debconf-set-selections
+echo "mysql-server-5.7 mysql-server/root_password password root" | debconf-set-selections
+echo "mysql-server-5.7 mysql-server/root_password_again password root" | debconf-set-selections
 apt-get -y install mysql-server-5.7
 SCRIPT
 
@@ -35,7 +35,6 @@ server {
       proxy_pass             http://localhost:8090;
     }
 }" > /etc/nginx/sites-available/default
-#cp /vagrant/amik.com.conf
 service nginx reload
 SCRIPT
 
